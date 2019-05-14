@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchPosts } from '../actions';
 
+import UserFooter from './UserFooter';
+
 class PostList extends Component {
   componentDidMount() {
     this.props.fetchPosts();
@@ -13,7 +15,9 @@ class PostList extends Component {
         <div className="card" key={post.id}>
           <div className="card-header">{post.title}</div>
           <div className="card-body">{post.body}</div>
-          <div className="card-footer">{'Author'}</div>
+          <div className="card-footer">
+            <UserFooter userId={post.userId} />
+          </div>
         </div>
       );
     });
