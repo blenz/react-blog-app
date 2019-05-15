@@ -1,11 +1,14 @@
+
+APP_NAME= blog-app
+
 build:
-	@docker build -q -t blog-app .
+	@docker build -q -t $(APP_NAME) .
 
 app: build
 	@docker run --rm -d \
 		-p 3000:3000 \
 		-v `pwd`:/app \
-		--name blog-app blog-app
+		--name $(APP_NAME) $(APP_NAME)
 
 kill:
-	@docker stop blog-app
+	@docker stop $(APP_NAME)
